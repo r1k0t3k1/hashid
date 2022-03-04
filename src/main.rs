@@ -1,4 +1,5 @@
 use std::io::{stdin, stdout, Write};
+mod hashes;
 
 const WELCOME_MESSAGE: &str = "HASH ID";
 const VERSION: &str = "1.0.0";
@@ -6,6 +7,8 @@ const VERSION: &str = "1.0.0";
 fn main() {
     println!("{}",WELCOME_MESSAGE);
     println!("{}",VERSION);
+
+    let table = hashes::new_hash_table();
 
     let mut stdout = stdout();
 
