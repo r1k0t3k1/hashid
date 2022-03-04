@@ -5,14 +5,14 @@ import bs4
 f = open('hashes.rs', 'w',encoding='UTF-8')
 
 f.write('''
-struct hash {
+pub struct hash {
   mode: usize,
-  name: String,
-  example: String,
+  name: &'static str,
+  example: &'static str,
 }
 
-fn new_hash_table() -> Vec<hash> {
-  let hashes: Vec<hash> = vec!();  
+pub fn new_hash_table() -> Vec<hash> {
+  let mut hashes: Vec<hash> = vec!();  
 
 ''')
 
@@ -33,5 +33,5 @@ for r in tr:
     r2 = raw_col2.text.strip(' ').replace('\n', '')
     f.write('  hases.push(hash { mode:%s,name:"%s",example:"%s"});\n' % (r0,r1,r2))
 
-f.write('}')
+f.write('  hashes\n}')
 f.close()
